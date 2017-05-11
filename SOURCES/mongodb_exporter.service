@@ -1,0 +1,13 @@
+[Unit]
+Description=MongoDB Exporter for Prometheus
+Documentation=https://github.com/prometheus/mongodb_exporter
+After=network.target
+
+[Service]
+EnvironmentFile=-/etc/default/mongodb_exporter
+User=prometheus
+ExecStart=/usr/bin/mongodb_exporter $MONGODB_EXPORTER_OPTS
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
